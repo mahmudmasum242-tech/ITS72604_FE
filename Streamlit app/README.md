@@ -17,11 +17,13 @@ Cloud, select Python 3.14 in the deployment dialog's **Advanced settings**;
 the cloud runtime is selected separately from `requirements.txt`.
 
 The app has an **Executive KPI** page, **Operations Insights**, and **Data Quality**.
-The dashboard uses `ev_campus_dataset.csv` and attaches dates from
-`sales_data.csv` by matching the numeric suffix in session and transaction IDs.
-The supplied files have 500 matching IDs and 700 unmatched sessions. Unmatched
-dates remain blank rather than being invented. The date filter includes
-undated sessions by default, with an option to exclude them.
+The dashboard reads EV sessions from `cleaned_energy_sales_data.csv` and uses
+`sales_data.csv` to refresh matched transaction dates and revenue. It matches
+numeric suffixes in session and transaction IDs. The supplied files have 500
+matching IDs and 700 unmatched sessions. Unmatched dates remain blank rather
+than being invented. The date filter includes undated sessions by default, with
+an option to exclude them. If the cleaned file is missing, the app falls back to
+`ev_campus_dataset.csv`.
 
 The pipeline can also clean the sales CSV directly:
 
